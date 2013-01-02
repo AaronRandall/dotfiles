@@ -1,0 +1,10 @@
+.*.swo
+.*.swn
+.*.swp
+.rvmrc
+.swo
+.swp
+*~
+coverage.cache
+tags
+vendor/bundle
