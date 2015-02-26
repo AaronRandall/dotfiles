@@ -106,3 +106,15 @@ export PS1='\[\033[01;32m\]\h\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)") \
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Find the current ssh-agent (if there is one)
+source ~/utils/ssh-find-agent/ssh-find-agent.sh
+ssh-find-agent -a
+if [ -z "$SSH_AUTH_SOCK" ]
+then
+     eval $(ssh_agent) > /dev/null
+        ssh-add -l >/dev/null || alias ssh='ssh-add -l >/dev/null || ssh-add && unalias ssh; ssh'
+fi
+
+# Include custom util binaries in path
+export PATH=$PATH":$HOME/utils"
